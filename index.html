@@ -25,6 +25,8 @@
             max-width: 500px;
             width: 100%;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         h1 {
             font-size: 24px;
@@ -48,15 +50,71 @@
             transition: background-color 0.2s;
             width: 100%;
             box-sizing: border-box;
+            cursor: pointer;
         }
         .btn:hover {
             background-color: #b91c1c;
+        }
+        
+        /* Ad Block Overlay Styles */
+        .ad-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .ad-box {
+            width: 100%;
+            height: 180px;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+        }
+        .skip-btn {
+            background: #374151;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: not-allowed;
+            width: 80%;
+            transition: background-color 0.2s;
+        }
+        .skip-btn.active {
+            background: #10b981;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Ad Block Overlay (Shows first for 5 seconds) -->
+    <div id="adOverlay" class="ad-overlay">
+        <div class="ad-box">
+            <!-- First Adsterra Script Placement (Social Bar Component) -->
+            <script src="https://pl30434047.effectivecpmnetwork.com/fc/05/91/fc0591cb7ad9f89ec50f219b4ee7c997.js"></script>
+        </div>
+        <button id="skipButton" class="skip-btn" disabled>Skip Ad in 5s</button>
+    </div>
+
+    <!-- Main Content (Hidden initially until user skips the ad) -->
     <h1>Demand for Resignation</h1>
     <p>Click the button below to automatically draft the protest email from your default email application.</p>
     
@@ -64,6 +122,34 @@
         Click to Send Email
     </a>
 </div>
+
+<!-- 5-Second Countdown Logic Script -->
+<script>
+    let timeLeft = 5;
+    const skipButton = document.getElementById('skipButton');
+    const adOverlay = document.getElementById('adOverlay');
+
+    const countdown = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+            skipButton.textContent = `Skip Ad in ${timeLeft}s`;
+        } else {
+            clearInterval(countdown);
+            skipButton.textContent = "Skip Ad & Protests";
+            skipButton.removeAttribute('disabled');
+            skipButton.classList.add('active');
+        }
+    }, 1000);
+
+    skipButton.addEventListener('click', () => {
+        if (timeLeft <= 0) {
+            adOverlay.style.display = 'none'; // Unblocks and reveals the primary mailto button
+        }
+    });
+</script>
+
+<!-- Second Adsterra Script Placement (Popunder script triggers on initial interactions) -->
+<script src="https://pl30434044.effectivecpmnetwork.com/36/6b/d8/366bd8ff0b85d57568bc8fca8941a8d7.js"></script>
 
 </body>
 </html>
