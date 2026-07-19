@@ -55,7 +55,7 @@
             background-color: #b91c1c;
         }
         
-        /* Fixed Scrollable Overlay Layout */
+        /* Fixed Heights to Prevent Page-Level Stretching */
         .ad-overlay {
             position: absolute;
             top: 0;
@@ -66,17 +66,19 @@
             border-radius: 12px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Pushes button to bottom */
+            justify-content: space-between;
             align-items: center;
             z-index: 10;
             padding: 20px;
             box-sizing: border-box;
-            overflow-y: auto; /* Allows scrolling inside if ads are tall */
         }
         .ad-box {
             width: 100%;
-            margin-bottom: 15px;
-            flex-grow: 1; /* Makes ad box fill up available space */
+            height: 280px; /* Locks the maximum height for the native ads */
+            overflow-y: auto; /* Makes only the ad box internally scrollable */
+            margin-bottom: 10px;
+            border: 1px solid #f3f4f6;
+            border-radius: 8px;
         }
         .skip-btn {
             background: #374151;
@@ -88,8 +90,7 @@
             font-weight: 600;
             cursor: not-allowed;
             width: 100%;
-            margin-top: 10px;
-            flex-shrink: 0; /* Prevents button from squeezing down */
+            flex-shrink: 0; /* Prevents the button from getting squished */
             transition: background-color 0.2s;
         }
         .skip-btn.active {
