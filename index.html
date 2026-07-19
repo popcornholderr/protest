@@ -26,7 +26,6 @@
             width: 100%;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
         h1 {
             font-size: 24px;
@@ -56,7 +55,7 @@
             background-color: #b91c1c;
         }
         
-        /* Fixed Center Container Layout for Native Banner */
+        /* Fixed Scrollable Overlay Layout */
         .ad-overlay {
             position: absolute;
             top: 0;
@@ -67,30 +66,30 @@
             border-radius: 12px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between; /* Pushes button to bottom */
             align-items: center;
             z-index: 10;
             padding: 20px;
             box-sizing: border-box;
+            overflow-y: auto; /* Allows scrolling inside if ads are tall */
         }
         .ad-box {
             width: 100%;
-            min-height: 200px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Makes ad box fill up available space */
         }
         .skip-btn {
             background: #374151;
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 14px 30px;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 600;
             cursor: not-allowed;
-            width: 80%;
+            width: 100%;
+            margin-top: 10px;
+            flex-shrink: 0; /* Prevents button from squeezing down */
             transition: background-color 0.2s;
         }
         .skip-btn.active {
@@ -102,7 +101,7 @@
 <body>
 
 <div class="container">
-    <!-- Ad Block Overlay (Shows first for 5 seconds) -->
+    <!-- Ad Block Overlay -->
     <div id="adOverlay" class="ad-overlay">
         <div class="ad-box">
             <!-- Native Banner Placement -->
@@ -121,7 +120,7 @@
     </a>
 </div>
 
-<!-- Social Bar Script (Remains active for passive floating widgets) -->
+<!-- Social Bar Script -->
 <script src="https://pl30434047.effectivecpmnetwork.com/fc/05/91/fc0591cb7ad9f89ec50f219b4ee7c997.js"></script>
 
 <!-- Countdown Logic Script -->
