@@ -25,7 +25,6 @@
             max-width: 500px;
             width: 100%;
             text-align: center;
-            position: relative;
         }
         h1 {
             font-size: 24px;
@@ -54,65 +53,12 @@
         .btn:hover {
             background-color: #b91c1c;
         }
-        
-        /* Fixed Heights to Prevent Page-Level Stretching */
-        .ad-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .ad-box {
-            width: 100%;
-            height: 280px; /* Locks the maximum height for the native ads */
-            overflow-y: auto; /* Makes only the ad box internally scrollable */
-            margin-bottom: 10px;
-            border: 1px solid #f3f4f6;
-            border-radius: 8px;
-        }
-        .skip-btn {
-            background: #374151;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: not-allowed;
-            width: 100%;
-            flex-shrink: 0; /* Prevents the button from getting squished */
-            transition: background-color 0.2s;
-        }
-        .skip-btn.active {
-            background: #10b981;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Ad Block Overlay -->
-    <div id="adOverlay" class="ad-overlay">
-        <div class="ad-box">
-            <!-- Native Banner Placement -->
-            <script async="async" data-cfasync="false" src="https://pl30438076.effectivecpmnetwork.com/9625645247570fd3715727938c0815dc/invoke.js"></script>
-            <div id="container-9625645247570fd3715727938c0815dc"></div>
-        </div>
-        <button id="skipButton" class="skip-btn" disabled>Skip Ad in 5s</button>
-    </div>
-
-    <!-- Main Email Content -->
+    <!-- Main Content -->
     <h1>Demand for Resignation</h1>
     <p>Click the button below to automatically draft the protest email from your default email application.</p>
     
@@ -120,34 +66,6 @@
         Click to Send Email
     </a>
 </div>
-
-<!-- Social Bar Script -->
-<script src="https://pl30434047.effectivecpmnetwork.com/fc/05/91/fc0591cb7ad9f89ec50f219b4ee7c997.js"></script>
-
-<!-- Countdown Logic Script -->
-<script>
-    let timeLeft = 5;
-    const skipButton = document.getElementById('skipButton');
-    const adOverlay = document.getElementById('adOverlay');
-
-    const countdown = setInterval(() => {
-        timeLeft--;
-        if (timeLeft > 0) {
-            skipButton.textContent = `Skip Ad in ${timeLeft}s`;
-        } else {
-            clearInterval(countdown);
-            skipButton.textContent = "Skip Ad & Protests";
-            skipButton.removeAttribute('disabled');
-            skipButton.classList.add('active');
-        }
-    }, 1000);
-
-    skipButton.addEventListener('click', () => {
-        if (timeLeft <= 0) {
-            adOverlay.style.display = 'none';
-        }
-    });
-</script>
 
 </body>
 </html>
